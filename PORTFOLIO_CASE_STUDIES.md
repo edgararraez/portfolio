@@ -142,7 +142,7 @@ Bilingual in **English (C1/C2)** and **Spanish (Native)**, Edgar combines high-v
 ## 📌 PILLAR 4: Posters, Merch, Apparel & Generative AI
 *Creative direction, music single packaging, commemorative cultural posters, branded apparel, and state-of-the-art AI prompt generation.*
 
-### Case 11: NERIO & Kira — Sustainable Apparel Merch & Botanical Art (5 Slides)
+### Case 11: NERIO & Kira — Sustainable Apparel Merch & Botanical Art (4 Slides)
 - **Client / Project:** NERIO Organic Cotton & Kira Café de Especialidad
 - **Role:** Graphic Artist & Merch Designer
 - **Tools:** Adobe Illustrator, Photoshop

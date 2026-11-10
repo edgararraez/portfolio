@@ -676,6 +676,23 @@
       overflow: hidden;
       background: #090a10;
       border: 1px solid var(--card-border);
+      transition: background 0.25s ease;
+    }
+
+    .carousel-container.light-mode {
+      background: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .carousel-container.light-mode .carousel-track {
+      background: #ffffff !important;
+    }
+
+    .carousel-container.light-mode .carousel-arrow {
+      background: rgba(255, 255, 255, 0.85);
+      color: #111;
+      border-color: rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
 
     .carousel-track {
@@ -1108,7 +1125,7 @@
       <div class="card" data-category="posters">
         <div class="card-thumb" onclick="openModal('nerio_kira')">
           <span class="pillar-tag">Apparel Merch & Botanical Art</span>
-          <span class="image-counter-badge">📸 5 Slides</span>
+          <span class="image-counter-badge">📸 4 Slides</span>
           <img src="./portfolio_curated/04_Artworks_Merch_AI/NERIO_Organic_Tshirt_Mockup.jpg" alt="NERIO Organic Cotton T-Shirt Mockup">
         </div>
         <div class="card-body">
@@ -1328,9 +1345,14 @@
           <span style="color:rgba(255,255,255,0.2);">|</span>
           <span style="font-size:12px;">Use <strong>←</strong> / <strong>→</strong> arrow keys to browse</span>
         </div>
-        <div class="autoplay-badge running" id="autoplay-toggle" onclick="toggleAutoplay()">
-          <span class="autoplay-pulse" id="autoplay-pulse-dot"></span>
-          <span id="autoplay-status-text">Auto-Play: 5s</span>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="bg-mode-toggle" id="bg-toggle-btn" onclick="toggleCanvasBg()" title="Toggle canvas background between dark and light" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.06); padding:4px 10px; border-radius:100px; font-size:12px; color:#fff; border:1px solid rgba(255,255,255,0.1); transition:all 0.2s;">
+            <span id="bg-mode-icon">🌓</span> <span id="bg-mode-text">Canvas: Dark</span>
+          </div>
+          <div class="autoplay-badge running" id="autoplay-toggle" onclick="toggleAutoplay()">
+            <span class="autoplay-pulse" id="autoplay-pulse-dot"></span>
+            <span id="autoplay-status-text">Auto-Play: 5s</span>
+          </div>
         </div>
       </div>
 
@@ -1392,8 +1414,7 @@
           "./portfolio_curated/04_Artworks_Merch_AI/NERIO_Organic_Tshirt_Mockup.jpg",
           "./portfolio_curated/04_Artworks_Merch_AI/Kira_SpecialtyCoffee_Garden_Poster.jpg",
           "./portfolio_curated/04_Artworks_Merch_AI/NERIO_BoundToHeart_Graphic.png",
-          "./portfolio_curated/04_Artworks_Merch_AI/NERIO_Quote_Typography.png",
-          "./portfolio_curated/04_Artworks_Merch_AI/Kira_Cafe_Botanical_Poster.png"
+          "./portfolio_curated/04_Artworks_Merch_AI/NERIO_Quote_Typography.png"
         ],
         challenge: "Deliver tactile, conscious graphic design for boutique ethical brands—an organic cotton streetwear label in Buenos Aires and a specialty coffee shop's garden compost initiative.",
         solution: "Engineered the 'Bound to Heart' custom rope artwork and typographic quote designed for screen-printing on heavyweight organic cotton t-shirts, complemented by vintage hand-drawn botanical vector posters encouraging customers to recycle coffee grounds.",
@@ -1688,6 +1709,23 @@
       currentSlideIdx = idx;
       updateSlideView();
       resetAutoplayTimer();
+    }
+
+    let isCanvasLight = false;
+    function toggleCanvasBg() {
+      isCanvasLight = !isCanvasLight;
+      const box = document.getElementById('carousel-box');
+      const text = document.getElementById('bg-mode-text');
+      const icon = document.getElementById('bg-mode-icon');
+      if (isCanvasLight) {
+        box.classList.add('light-mode');
+        text.innerText = 'Canvas: Light';
+        icon.innerText = '☀️';
+      } else {
+        box.classList.remove('light-mode');
+        text.innerText = 'Canvas: Dark';
+        icon.innerText = '🌓';
+      }
     }
 
     function startAutoplay() {
