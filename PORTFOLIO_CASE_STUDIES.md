@@ -100,7 +100,7 @@ Bilingual in **English (C1/C2)** and **Spanish (Native)**, Edgar combines high-v
 - **Solution:** Crafted an avant-garde minimalist typographic logo supported by high-tactile luxury print finishes (matte black envelopes, blind debossing, foil stamping). Extended across VIP invitation suites, limited-edition vinyl packaging (NS001), and street posters.
 - **Impact:** 10-artboard Behance case study establishing a cult aesthetic identity for private event culture.
 
-### Case 06: GAMCOR — Complete Industrial Brand Guidelines (7 Slides)
+### Case 06: GAMCOR — Complete Industrial Brand Guidelines (12 Slides)
 - **Client / Project:** GAMCOR Engineering & Construction
 - **Role:** Lead Brand Identity Designer
 - **Tools:** Adobe Illustrator, InDesign, Photoshop
