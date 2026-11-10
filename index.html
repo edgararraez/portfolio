@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edgar Arráez — Portfolio | Senior Art Director & Visual Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card-bg: #12141c;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover: rgba(255, 255, 255, 0.16);
+      --accent: #ff3366;
+      --accent-glow: rgba(255, 51, 102, 0.28);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --pill-bg: rgba(255, 255, 255, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient background mesh */
+    .ambient-glow {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 960px;
+      height: 640px;
+      background: radial-gradient(circle, rgba(255, 51, 102, 0.14) 0%, rgba(139, 92, 246, 0.1) 45%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(100px);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation / Header */
+    header {
+      padding: 32px 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-avatar-squircle {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px; /* Rounded-corner square matching the header icon style */
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 18px var(--accent-glow);
+      background: #141722;
+      flex-shrink: 0;
+    }
+
+    .avatar-photo-head {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .header-name-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-badge-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .header-sub-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 3px;
+    }
+
+    .meta-sep {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .header-email-link {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-email-link:hover {
+      color: #ff3366;
+      text-decoration: underline;
+    }
+
+    .logo-text h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #ff3366;
+      color: #fff;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: #ff1f59;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: var(--pill-bg);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 56px 0 24px;
+      text-align: left;
+    }
+
+    .target-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(255, 51, 102, 0.12);
+      border: 1px solid rgba(255, 51, 102, 0.35);
+      color: #ff4d79;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 5.2vw, 68px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 24px;
+      max-width: 1040px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #ffffff 30%, #ff4d79 70%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      font-size: clamp(16px, 1.7vw, 20px);
+      color: var(--text-muted);
+      max-width: 880px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .status-dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* ROTATING RECTANGULAR PANELS (30s display, 4s smooth blur/fade) */
+    .hero-panels-viewport {
+      position: relative;
+      display: grid;
+      margin: 28px 0 16px;
+      width: 100%;
+    }
+
+    .hero-panel {
+      grid-area: 1 / 1;
+      background: rgba(18, 20, 28, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px 38px;
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      visibility: hidden;
+      filter: blur(14px) brightness(0.4);
+      transform: translateY(6px);
+      transition: opacity 4s cubic-bezier(0.25, 1, 0.5, 1), 
+                  filter 4s cubic-bezier(0.25, 1, 0.5, 1), 
+                  transform 4s cubic-bezier(0.25, 1, 0.5, 1), 
+                  visibility 4s;
+      pointer-events: none;
+    }
+
+    .hero-panel.active {
+      opacity: 1;
+      visibility: visible;
+      filter: blur(0px) brightness(1);
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Minimalist 2-Dot Indicator */
+    .hero-dots-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 16px 0 24px;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+
+    .hero-dot:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(1.2);
+    }
+
+    .hero-dot.active {
+      width: 10px;
+      height: 10px;
+      background: #ff3366;
+      border-color: #ff3366;
+      box-shadow: 0 0 12px var(--accent-glow), 0 0 4px #ff3366;
+      transform: scale(1.2);
+    }
+
+    /* Top Metrics Row */
+    .panel-metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 18px;
+    }
+
+    .panel-metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-metric-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .panel-metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    /* Panel Content Row (2 Columns) */
+    .panel-content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .panel-content-row h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #ff3366;
+      margin-bottom: 8px;
+    }
+
+    .panel-content-row p {
+      margin-bottom: 6px;
+    }
+
+    .panel-content-row strong {
+      color: #f3f4f6;
+    }
+
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .skill-chip {
+      background: var(--pill-bg);
+      border: 1px solid var(--card-border);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #d1d5db;
+    }
+
+
+
+    /* Filters Bar */
+    .filter-wrapper {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: rgba(18, 20, 28, 0.88);
+      backdrop-filter: blur(20px);
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      display: flex;
+      gap: 8px;
+      margin: 20px 0 44px;
+      overflow-x: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .filter-btn.active {
+      background: #ff3366;
+      color: #fff;
+      box-shadow: 0 2px 14px var(--accent-glow);
+    }
+
+    /* Grid Layout */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 32px;
+      margin-bottom: 100px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--card-hover);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 300px;
+      background: #181b26;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover .card-thumb img {
+      transform: scale(1.04);
+    }
+
+    .pillar-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(9, 10, 15, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #ff6b8b;
+    }
+
+    .image-counter-badge {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-client {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+      line-height: 1.25;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .tools-list {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tool-badge {
+      background: var(--pill-bg);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #d1d5db;
+    }
+
+    .open-modal-btn {
+      color: #ff3366;
+      font-size: 13px;
+      font-weight: 700;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s;
+    }
+
+    .open-modal-btn:hover {
+      text-decoration: underline;
+      transform: translateX(2px);
+    }
+
+    /* Modal / Carousel Deep Dive */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 7, 11, 0.94);
+      backdrop-filter: blur(25px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #12141f;
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      max-width: 1040px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 40px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #fff;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* CAROUSEL VIEWER COMPONENT */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      margin: 20px 0 16px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #090a10;
+      border: 1px solid var(--card-border);
+    }
+
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide-img {
+      max-width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      user-select: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Carousel Nav Arrows */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(18, 20, 31, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 5;
+    }
+
+    .carousel-arrow:hover {
+      background: #ff3366;
+      border-color: #ff3366;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+
+    .carousel-arrow.prev { left: 18px; }
+    .carousel-arrow.next { right: 18px; }
+
+    /* Carousel Top Controls & Timer */
+    .carousel-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4px 10px;
+    }
+
+    .carousel-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .autoplay-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 11px;
+      font-weight: 600;
+      color: #9ca3af;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .autoplay-badge.running {
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .autoplay-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Thumbnail Ribbon */
+    .thumbnail-ribbon {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 2px;
+      margin-bottom: 24px;
+    }
+
+    .thumb-item {
+      width: 72px;
+      height: 52px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.5;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      background: #090a10;
+    }
+
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumb-item:hover {
+      opacity: 0.9;
+    }
+
+    .thumb-item.active {
+      border-color: #ff3366;
+      opacity: 1;
+      transform: scale(1.05);
+      box-shadow: 0 2px 10px var(--accent-glow);
+    }
+
+    .case-section {
+      margin-bottom: 20px;
+    }
+
+    .case-section h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ff3366;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .case-section p {
+      font-size: 15px;
+      color: #d1d5db;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0 80px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-layout-grid {
+        grid-template-columns: 1fr;
+      }
+      .panel-content-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .panel-metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .modal-content {
+        padding: 24px;
+      }
+      .carousel-track {
+        height: 340px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <!-- Header with Profile Squircle & Essential Meta -->
+    <header>
+      <div class="logo-badge">
+        <div class="header-avatar-squircle">
+          <img src="./assets/edgar_face_square.png" alt="Edgar Arráez" class="avatar-photo-head">
+        </div>
+        <div class="logo-text">
+          <div class="header-name-row">
+            <h1>Edgar Arráez</h1>
+            <span class="status-badge-header"><span class="status-dot-pulse"></span> Available for Hire</span>
+          </div>
+          <p class="header-sub-meta">
+            Senior Art Director & Visual Designer 
+            <span class="meta-sep">•</span> 📍 El Bolsón, Río Negro, Argentina 
+            <span class="meta-sep">•</span> <a href="mailto:arraezedgar.a@gmail.com" class="header-email-link">arraezedgar.a@gmail.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="https://behance.net/edgararraez" target="_blank" class="btn btn-ghost">Behance Profile ↗</a>
+        <a href="mailto:arraezedgar.a@gmail.com" class="btn btn-primary">Get in Touch / Hire</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="target-badge">✦ Senior Art Director & Visual Designer · Portfolio</div>
+      <h2 class="hero-title">High-impact <span>content-first design</span>, bold identities & culture-driven storytelling.</h2>
+      <p class="hero-lead">
+        Hey, this is me. 10+ years leading visual identities, high-conversion social feeds, editorial pitch decks, and cultural merchandise for international brands, artists, and agencies across the US, UK, Ireland, and Latin America.
+      </p>
+
+      <!-- Alternating Full-Width Rectangular Panels (60s display, 8s smooth blur/fade) -->
+      <div class="hero-panels-viewport">
+          
+          <!-- PANEL 1: Career Highlights & Core Metrics -->
+          <div class="hero-panel active" id="hero-panel-0">
+            <div>
+              <div class="panel-metrics-row">
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">10+</span>
+                  <span class="panel-metric-label">Years of Experience</span>
+                </div>
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">50+</span>
+                  <span class="panel-metric-label">Social Ads & Carousels</span>
+                </div>
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">12+</span>
+                  <span class="panel-metric-label">Master Brand Guidelines</span>
+                </div>
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">C1/C2</span>
+                  <span class="panel-metric-label">English Fluency</span>
+                </div>
+              </div>
+
+              <div class="panel-content-row">
+                <div>
+                  <h4>Creative Leadership & High-Ticket Commercial Experience</h4>
+                  <p><strong>Senior Graphic Designer | Octopus Creativo</strong> (2020 – 2023) — Spearheaded brand strategy, commercial sales decks, and high-frequency multimedia that empowered leadership to pitch multimillion-dollar enterprise eCommerce accounts across LATAM.</p>
+                  <p><strong>Art Director | Explosión Creativa</strong> (2015 – 2017) — Led and mentored a multidisciplinary creative department of <strong>10 designers, illustrators, and copywriters</strong> across corporate branding and campaigns.</p>
+                </div>
+                <div>
+                  <h4>Academic Foundation & Certified Specialization</h4>
+                  <p><strong>Degree in Communication & Graphic Design</strong> — Instituto Universitario de Diseño Las Mercedes (Graduated July 2014, 10+ years dedicated to design craft).</p>
+                  <p><strong>Specialized Credentials:</strong> Professional UX/UI Design Certification (Domestika) & Figma Master Certification.</p>
+                  <p style="margin-top:10px;">Direct Email: <strong style="color:#f3f4f6;">arraezedgar.a@gmail.com</strong> | WhatsApp: <strong style="color:#f3f4f6;">+54 11 7371-1095</strong></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- PANEL 2: Creative Stack, Culture & AI Workflows -->
+          <div class="hero-panel" id="hero-panel-1">
+            <div>
+              <div class="panel-metrics-row">
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">Content-1st</span>
+                  <span class="panel-metric-label">High-Retention Social</span>
+                </div>
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">Brand Systems</span>
+                  <span class="panel-metric-label">End-to-End Guidelines</span>
+                </div>
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">Apparel/Merch</span>
+                  <span class="panel-metric-label">Screenprint & Vinyl</span>
+                </div>
+                <div class="panel-metric-item">
+                  <span class="panel-metric-num">Generative AI</span>
+                  <span class="panel-metric-label">Midjourney & Prompt Craft</span>
+                </div>
+              </div>
+
+              <div class="panel-content-row">
+                <div>
+                  <h4>Culture, Music, Hospitality & Influencer Impact</h4>
+                  <p><strong>Brake Loose (Dublin Rock Band):</strong> Multi-year creative direction across discography single artworks, Spotify editorial release covers, vinyl mockups, and festival press kits.</p>
+                  <p><strong>Underground Culture & Culinary Pop-Ups:</strong> Cult-status VIP branding & vinyl releases for <strong>NOMAD</strong>, viral social triad feeds for <strong>Ramen & Arepa Brunch</strong>, and personal brand authority for crypto analyst <strong>Gonzalo Barcala</strong>.</p>
+                </div>
+                <div>
+                  <h4>Design Arsenal & Production Stack</h4>
+                  <p><strong>Tools & Software:</strong> Adobe Photoshop, Illustrator, InDesign, Premiere Pro, Lightroom, Figma, Adobe XD.</p>
+                  <div class="skills-chips">
+                    <span class="skill-chip">Photoshop</span>
+                    <span class="skill-chip">Illustrator</span>
+                    <span class="skill-chip">InDesign</span>
+                    <span class="skill-chip">Figma</span>
+                    <span class="skill-chip">Midjourney AI</span>
+                    <span class="skill-chip">Content-First Social</span>
+                    <span class="skill-chip">Apparel Merch</span>
+                  </div>
+                  <p style="margin-top:10px;">Available for senior agency roles and strategic brand partnerships worldwide.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Minimalist 2-Dot Indicator -->
+        <div class="hero-dots-container">
+          <div class="hero-dot active" id="hero-dot-0" onclick="switchHeroPanel(0)" title="Career & Background"></div>
+          <div class="hero-dot" id="hero-dot-1" onclick="switchHeroPanel(1)" title="Creative Arsenal & Culture"></div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="filter-wrapper">
+      <button class="filter-btn active" onclick="filterCategory('all', this)">All Featured Projects</button>
+      <button class="filter-btn" onclick="filterCategory('social', this)">Social Media & Ads</button>
+      <button class="filter-btn" onclick="filterCategory('branding', this)">Brand Identity & Systems</button>
+      <button class="filter-btn" onclick="filterCategory('posters', this)">Posters, Merch & AI</button>
+      <button class="filter-btn" onclick="filterCategory('decks', this)">Decks & Editorial</button>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid" id="grid">
+
+      <!-- CARD 1: RAMEN BRUNCH & AREPA BRUNCH -->
+      <div class="card" data-category="social">
+        <div class="card-thumb" onclick="openModal('brunch')">
+          <span class="pillar-tag">Social Media & Food Culture</span>
+          <span class="image-counter-badge">📸 6 Slides</span>
+          <img src="./portfolio_curated/01_Social_Media_Ads/Ramen_Brunch_Feed_Triad_01.png" alt="Ramen Brunch Social Triad">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Culinary Pop-Up Experience</span>
+          <h3 class="card-title">Ramen Brunch & Arepa Brunch Social Feeds</h3>
+          <p class="card-desc">High-saturation 3-in-1 Instagram feed banners designed with risograph halftone textures, energetic typography, and appetizing food photography.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Photoshop</span>
+              <span class="tool-badge">Illustrator</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('brunch')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: GONZALO BARCALA (CRYPTO INFLUENCER SOCIAL MEDIA) -->
+      <div class="card" data-category="social">
+        <div class="card-thumb" onclick="openModal('gonzalo')">
+          <span class="pillar-tag">Personal Brand & Social Ads</span>
+          <span class="image-counter-badge">📸 7 Slides</span>
+          <img src="./portfolio_curated/01_Social_Media_Ads/Gonzalo_IG_Post_01.jpg" alt="Gonzalo Barcala Crypto Social Media">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Gonzalo Barcala (Crypto & Finance Influencer)</span>
+          <h3 class="card-title">Influencer Personal Brand & High-Engagement Social Feeds</h3>
+          <p class="card-desc">High-authority Instagram feed posts, analytical chart overlays, and dynamic story templates engineered to build personal brand credibility in tech/crypto.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Photoshop</span>
+              <span class="tool-badge">Illustrator</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('gonzalo')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: NOMAD PRIVATE EVENT BRANDING -->
+      <div class="card" data-category="branding">
+        <div class="card-thumb" onclick="openModal('nomadbrand')">
+          <span class="pillar-tag">Brand Identity & Luxury</span>
+          <span class="image-counter-badge">📸 8 Slides</span>
+          <img src="./portfolio_curated/02_Brand_Identity/NOMAD_Brand_Stationery_Envelopes.png" alt="NOMAD Private Event Branding">
+        </div>
+        <div class="card-body">
+          <span class="card-client">NOMAD Underground Collective</span>
+          <h3 class="card-title">Underground Event Identity & Tactile Stationery</h3>
+          <p class="card-desc">Monochrome luxury branding, matte black foil-stamped VIP envelopes, invitations, and vinyl record packaging for an exclusive electronic music collective.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Illustrator</span>
+              <span class="tool-badge">Photoshop</span>
+              <span class="tool-badge">InDesign</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('nomadbrand')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4: NOMAD SECOND EDITION NEON POSTER -->
+      <div class="card" data-category="posters">
+        <div class="card-thumb" onclick="openModal('nomadposter')">
+          <span class="pillar-tag">Posters & Nightlife</span>
+          <span class="image-counter-badge">📸 3 Slides</span>
+          <img src="./portfolio_curated/04_Artworks_Merch_AI/NOMAD_Underground_Pillar_Poster.png" alt="NOMAD Neon Poster Series">
+        </div>
+        <div class="card-body">
+          <span class="card-client">NOMAD Second Edition</span>
+          <h3 class="card-title">Hypnotic Neon Aura Street Posters</h3>
+          <p class="card-desc">Iridescent ultraviolet and magenta aura visuals paired with brutalist typography for underground pillar street mockups and Instagram video teasers.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Photoshop</span>
+              <span class="tool-badge">Illustrator</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('nomadposter')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5: NERIO & KIRA (SUSTAINABLE MERCH & SPECIALTY COFFEE) -->
+      <div class="card" data-category="posters">
+        <div class="card-thumb" onclick="openModal('nerio_kira')">
+          <span class="pillar-tag">Apparel Merch & Botanical Art</span>
+          <span class="image-counter-badge">📸 5 Slides</span>
+          <img src="./portfolio_curated/04_Artworks_Merch_AI/NERIO_Organic_Tshirt_Mockup.jpg" alt="NERIO Organic Cotton T-Shirt Mockup">
+        </div>
+        <div class="card-body">
+          <span class="card-client">NERIO Apparel & Kira Specialty Coffee</span>
+          <h3 class="card-title">Organic Cotton T-Shirt Merch & Botanical Posters</h3>
+          <p class="card-desc">Minimalist screen-printed organic cotton streetwear apparel ("Bound to Heart") paired with vintage hand-drawn botanical compost posters for specialty coffee culture.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Illustrator</span>
+              <span class="tool-badge">Photoshop</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('nerio_kira')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6: NFTEE Web3 Social Ecosystem -->
+      <div class="card" data-category="social">
+        <div class="card-thumb" onclick="openModal('nftee')">
+          <span class="pillar-tag">Social Media & Ads</span>
+          <span class="image-counter-badge">📸 7 Slides</span>
+          <img src="./portfolio_curated/01_Social_Media_Ads/NFTEE_Carousel_01.jpg" alt="NFTEE Carousel">
+        </div>
+        <div class="card-body">
+          <span class="card-client">NFTEE Platform</span>
+          <h3 class="card-title">Web3 & Tech High-Retention Carousels</h3>
+          <p class="card-desc">Vibrant multi-slide educational carousels engineered for deep user saves, high completion swipe rates, and Twitter Spaces broadcast branding.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Photoshop</span>
+              <span class="tool-badge">Illustrator</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('nftee')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 7: GAMCOR Master Brand Guidelines -->
+      <div class="card" data-category="branding">
+        <div class="card-thumb" onclick="openModal('gamcor')">
+          <span class="pillar-tag">Brand Identity</span>
+          <span class="image-counter-badge">📸 7 Slides</span>
+          <img src="./portfolio_curated/02_Brand_Identity/GAMCOR_Slide_Brand01.jpg" alt="GAMCOR Brandbook">
+        </div>
+        <div class="card-body">
+          <span class="card-client">GAMCOR Engineering</span>
+          <h3 class="card-title">Architectural & Industrial Brandbook</h3>
+          <p class="card-desc">A full 20+ page master identity system defining geometry, site signage, helmet mockups, color coding, and rigorous DO's & DON'Ts.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Illustrator</span>
+              <span class="tool-badge">InDesign</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('gamcor')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 8: Brake Loose Discography, Artworks & 2025 EPK -->
+      <div class="card" data-category="posters decks">
+        <div class="card-thumb" onclick="openModal('brakeloose')">
+          <span class="pillar-tag">Artworks, Merch & EPK</span>
+          <span class="image-counter-badge">📸 11 Slides</span>
+          <img src="./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_YIAV_Vinyl_PreSave.jpg" alt="Brake Loose Discography & EPK">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Brake Loose (Dublin, IE)</span>
+          <h3 class="card-title">Dublin Rock Band Discography, 2025 EPK & Artworks</h3>
+          <p class="card-desc">Complete visual universe for Dublin rock outfit: 2025 Electronic Press Kit (EPK), official vector logo, vinyl pre-save artwork ('Yea I'm A Vampire'), single covers, and merchandise.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Photoshop</span>
+              <span class="tool-badge">Illustrator</span>
+              <span class="tool-badge">InDesign</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('brakeloose')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 9: Denise De Tommasi Stationery -->
+      <div class="card" data-category="branding">
+        <div class="card-thumb" onclick="openModal('denisedt')">
+          <span class="pillar-tag">Brand Identity</span>
+          <span class="image-counter-badge">📸 7 Slides</span>
+          <img src="./portfolio_curated/02_Brand_Identity/DeniseDT_Stationery_Mockup.png" alt="Denise DT Stationery">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Denise De Tommasi</span>
+          <h3 class="card-title">Luxury Executive Stationery & Identity</h3>
+          <p class="card-desc">Monogram typography, tactile embossed business card finishes, and multi-artboard Behance showcase for boutique consulting.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Illustrator</span>
+              <span class="tool-badge">Photoshop</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('denisedt')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 10: Swiss Posters UCAB & TC 16th Anniversary -->
+      <div class="card" data-category="posters">
+        <div class="card-thumb" onclick="openModal('posters')">
+          <span class="pillar-tag">Posters & Editorial</span>
+          <span class="image-counter-badge">📸 8 Slides</span>
+          <img src="./portfolio_curated/04_Artworks_Merch_AI/Poster_FBE_UCAB_AngleView.png" alt="Poster FBE UCAB">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Academic & Cultural</span>
+          <h3 class="card-title">Swiss Style Typography & Concert Posters</h3>
+          <p class="card-desc">Architectural grid discipline, bold editorial type scaling, and large-format print layouts celebrating cultural and university milestones.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Illustrator</span>
+              <span class="tool-badge">InDesign</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('posters')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 11: Octopus LATAM Commercial Deck -->
+      <div class="card" data-category="decks">
+        <div class="card-thumb" onclick="openModal('octopus')">
+          <span class="pillar-tag">Decks & Editorial</span>
+          <span class="image-counter-badge">📸 3 Slides</span>
+          <img src="./portfolio_curated/01_Social_Media_Ads/OCTOPUS_Story_088.jpg" alt="Octopus LATAM">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Octopus LATAM Agency</span>
+          <h3 class="card-title">Enterprise Commercial Pitch Deck & Editorial</h3>
+          <p class="card-desc">Comprehensive B2B sales deck, Black Friday conversion checklist, and daily eCommerce news stories crafted for enterprise retail clients.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">InDesign</span>
+              <span class="tool-badge">Figma</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('octopus')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 12: Dennys Caballero Brochure -->
+      <div class="card" data-category="branding">
+        <div class="card-thumb" onclick="openModal('dennyscaballero')">
+          <span class="pillar-tag">Brand & Editorial</span>
+          <span class="image-counter-badge">📸 6 Slides</span>
+          <img src="./portfolio_curated/02_Brand_Identity/DennysCaballero_Cover.png" alt="Dennys Caballero">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Dennys Caballero</span>
+          <h3 class="card-title">Corporate Collateral & Tri-Fold Brochure</h3>
+          <p class="card-desc">Pastel gradient corporate branding system featuring multi-fold printed collateral, geometric identity mark, and full digital application assets.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">InDesign</span>
+              <span class="tool-badge">Illustrator</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('dennyscaballero')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 13: Ethereal Generative AI Art Direction -->
+      <div class="card" data-category="posters">
+        <div class="card-thumb" onclick="openModal('ethereal')">
+          <span class="pillar-tag">Generative AI</span>
+          <span class="image-counter-badge">📸 3 Slides</span>
+          <img src="./portfolio_curated/04_Artworks_Merch_AI/Ethereal_AI_Concept_01.jpg" alt="Ethereal AI Concept">
+        </div>
+        <div class="card-body">
+          <span class="card-client">Ethereal Vistas</span>
+          <h3 class="card-title">Generative AI Art Direction & Prompt Systems</h3>
+          <p class="card-desc">High-fidelity concept development pairing Midjourney/Stable Diffusion prompt architectures with Photoshop finishing for commercial campaigns.</p>
+          <div class="card-footer">
+            <div class="tools-list">
+              <span class="tool-badge">Midjourney</span>
+              <span class="tool-badge">Photoshop AI</span>
+            </div>
+            <button class="open-modal-btn" onclick="openModal('ethereal')">Explore Project & Slides →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Edgar Arráez. Senior Art Director & Visual Designer · El Bolsón, Río Negro, Argentina.</p>
+      <div class="header-actions">
+        <a href="https://behance.net/edgararraez" target="_blank" class="btn btn-ghost">Behance Profile</a>
+        <a href="mailto:arraezedgar.a@gmail.com" class="btn btn-primary">arraezedgar.a@gmail.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Deep Dive Modal with Multi-Image Carousel -->
+  <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      
+      <!-- Modal Header -->
+      <div id="modal-header"></div>
+
+      <!-- Interactive Carousel Viewer -->
+      <div class="carousel-header-bar">
+        <div class="carousel-meta-left">
+          <span id="slide-counter-text" style="font-weight:700; color:#fff;">Slide 1 of 1</span>
+          <span style="color:rgba(255,255,255,0.2);">|</span>
+          <span style="font-size:12px;">Use <strong>←</strong> / <strong>→</strong> arrow keys to browse</span>
+        </div>
+        <div class="autoplay-badge running" id="autoplay-toggle" onclick="toggleAutoplay()">
+          <span class="autoplay-pulse" id="autoplay-pulse-dot"></span>
+          <span id="autoplay-status-text">Auto-Play: 5s</span>
+        </div>
+      </div>
+
+      <div class="carousel-container" id="carousel-box" onmouseenter="pauseAutoplayHover()" onmouseleave="resumeAutoplayHover()">
+        <button class="carousel-arrow prev" onclick="prevSlide(event)">&#10094;</button>
+        <button class="carousel-arrow next" onclick="nextSlide(event)">&#10095;</button>
+        <div class="carousel-track">
+          <img src="" id="carousel-main-img" class="carousel-slide-img" alt="Carousel Slide">
+        </div>
+      </div>
+
+      <!-- Thumbnail Ribbon -->
+      <div class="thumbnail-ribbon" id="thumb-ribbon"></div>
+
+      <!-- Case Study Text Body -->
+      <div id="modal-text-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const cases = {
+      brunch: {
+        title: "Ramen Brunch & Arepa Brunch — Food & Event Social Campaigns",
+        client: "Pop-Up Culinary Experiences | Content-First Social",
+        images: [
+          "./portfolio_curated/01_Social_Media_Ads/Ramen_Brunch_Feed_Triad_01.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Ramen_Brunch_Flyer_Orange.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Ramen_Brunch_Flyer_Red.png",
+          "./portfolio_curated/01_Social_Media_Ads/Ramen_Brunch_Feed_Triad_02.png",
+          "./portfolio_curated/01_Social_Media_Ads/Arepa_Brunch_Feed_Triad.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Arepa_Brunch_Flyer.png"
+        ],
+        challenge: "Capture immediate attention in crowded Instagram feeds for independent culinary pop-up events, driving event pre-orders and viral shares against established hospitality brands.",
+        solution: "Designed high-saturation 3-in-1 social grid composites (Triads) combining warm risograph textures, bold neo-retro display typography, and appetizing macro food photography. Created dedicated single flyers for street-level wheatpaste promotion.",
+        tools: "Adobe Photoshop, Adobe Illustrator",
+        impact: "Drove high social engagement and ticket sell-outs through thumb-stopping Instagram grid aesthetic."
+      },
+      gonzalo: {
+        title: "Gonzalo Barcala — Influencer Brand & Social Compositions",
+        client: "Gonzalo Barcala (Crypto & Tech Influencer)",
+        images: [
+          "./portfolio_curated/01_Social_Media_Ads/Gonzalo_IG_Post_01.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/Gonzalo_IG_Post_02.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/Gonzalo_IG_Post_03.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/Gonzalo_IG_Post_04.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/Gonzalo_IG_Post_09.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/Gonzalo_Story_Template.png",
+          "./portfolio_curated/01_Social_Media_Ads/Gonzalo_Logo.png"
+        ],
+        challenge: "Build a high-credibility personal brand ecosystem for an active financial/crypto influencer to explain market dynamics and retain viewers in fast-scrolling social feeds.",
+        solution: "Formulated a signature minimalist identity combining bold sans-serif display typography, technical financial graph overlays, dark-mode chart highlights, and standardized Instagram Story broadcast templates.",
+        tools: "Adobe Photoshop, Adobe Illustrator",
+        impact: "Increased follower retention and engagement across daily market analysis stories and feed posts."
+      },
+      nerio_kira: {
+        title: "NERIO & Kira — Sustainable Apparel Merch & Specialty Coffee Art",
+        client: "NERIO Organic Cotton & Kira Café de Especialidad",
+        images: [
+          "./portfolio_curated/04_Artworks_Merch_AI/NERIO_Organic_Tshirt_Mockup.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/Kira_SpecialtyCoffee_Garden_Poster.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/NERIO_BoundToHeart_Graphic.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/NERIO_Quote_Typography.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Kira_Cafe_Botanical_Poster.png"
+        ],
+        challenge: "Deliver tactile, conscious graphic design for boutique ethical brands—an organic cotton streetwear label in Buenos Aires and a specialty coffee shop's garden compost initiative.",
+        solution: "Engineered the 'Bound to Heart' custom rope artwork and typographic quote designed for screen-printing on heavyweight organic cotton t-shirts, complemented by vintage hand-drawn botanical vector posters encouraging customers to recycle coffee grounds.",
+        tools: "Adobe Illustrator, Adobe Photoshop",
+        impact: "Demonstrates versatility in physical merchandise, eco-branding, and hand-crafted vector illustration."
+      },
+      nomadbrand: {
+        title: "NOMAD — Underground Music Event Brand System & Tactile Collateral",
+        client: "NOMAD Private Events & Record Collective",
+        images: [
+          "./portfolio_curated/02_Brand_Identity/NOMAD_Brand_Stationery_Envelopes.png",
+          "./portfolio_curated/02_Brand_Identity/NOMAD_Brand_Artboard01.png",
+          "./portfolio_curated/02_Brand_Identity/NOMAD_Brand_Artboard02.png",
+          "./portfolio_curated/02_Brand_Identity/NOMAD_Brand_Artboard03.png",
+          "./portfolio_curated/02_Brand_Identity/NOMAD_Brand_Artboard04.png",
+          "./portfolio_curated/02_Brand_Identity/NOMAD_Brand_Artboard06.png",
+          "./portfolio_curated/02_Brand_Identity/NOMAD_Business_Cards.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/NOMAD_Vinyl_Release.jpg"
+        ],
+        challenge: "Craft an enigmatic, highly exclusive visual identity for an underground private music collective that communicates prestige both in hand and online.",
+        solution: "Engineered a minimalist typographic mark paired with high-tactile luxury print finishes (matte black envelopes, blind debossing, custom VIP access passes). Extended into vinyl record packaging (NS001) and digital application touchpoints.",
+        tools: "Adobe Illustrator, Adobe Photoshop, InDesign",
+        impact: "10-artboard Behance feature establishing a cult aesthetic identity for private event culture."
+      },
+      nomadposter: {
+        title: "NOMAD Second Edition — Hypnotic Neon Street Posters",
+        client: "NOMAD Second Edition Events",
+        images: [
+          "./portfolio_curated/04_Artworks_Merch_AI/NOMAD_Underground_Pillar_Poster.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/NOMAD_Neon_Poster_Cover.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/NOMAD_Event_Flyer.png"
+        ],
+        challenge: "Build visual anticipation and street buzz for the second iteration of the underground event series.",
+        solution: "Designed an iridescent ultraviolet and magenta aura visual centered around a reaching hand motif, contrasted with brutalist typographic information. Adapted into large format underground pillar mockups and motion video teasers.",
+        tools: "Adobe Photoshop, Illustrator",
+        impact: "Created organic social intrigue and viral street poster presence."
+      },
+      nftee: {
+        title: "NFTEE — High-Retention Web3 Social Ecosystem",
+        client: "NFTEE Platform | Social Media & Growth Design",
+        images: [
+          "./portfolio_curated/01_Social_Media_Ads/NFTEE_Carousel_01.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/NFTEE_Carousel_02.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/NFTEE_Carousel_03.png",
+          "./portfolio_curated/01_Social_Media_Ads/NFTEE_IG_01.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/NFTEE_IG_03.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/NFTEE_IG_10.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/NFTEE_Twitter_Spaces.jpg"
+        ],
+        challenge: "Web3 concepts are notoriously convoluted. The mission was to translate complex crypto mechanics into visually engaging, punchy, and scannable social content that drove bookmarking, swipe completion, and Twitter Spaces event attendance.",
+        solution: "Formulated a modular design grid utilizing high-visibility neon accents on deep carbon backgrounds. Engineered seamless multi-slide carousel loops where graphics flow from one card to the next, maximizing algorithmic retention signals on Instagram.",
+        tools: "Adobe Photoshop, Adobe Illustrator, Premiere Pro",
+        impact: "50+ multi-slide assets produced, creating an instantly recognizable visual authority that elevated organic community engagement."
+      },
+      gamcor: {
+        title: "GAMCOR — Master Industrial Brand Guidelines 2023",
+        client: "GAMCOR Engineering & Construction",
+        images: [
+          "./portfolio_curated/02_Brand_Identity/GAMCOR_Slide_Brand01.jpg",
+          "./portfolio_curated/02_Brand_Identity/GAMCOR_Slide_Logo.jpg",
+          "./portfolio_curated/02_Brand_Identity/GAMCOR_Slide_Dos.jpg",
+          "./portfolio_curated/02_Brand_Identity/GAMCOR_Slide_Donts.jpg",
+          "./portfolio_curated/02_Brand_Identity/GAMCOR_Slide_Principles.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/GAMCOR_Carousel_Cover.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/GAMCOR_Carousel_Slide2.jpg"
+        ],
+        challenge: "The brand needed a modern, authoritative corporate identity that could reliably translate across extreme scales—from pocket business cards and digital PDFs to 10-meter construction site billboards and safety equipment.",
+        solution: "Constructed a mathematically balanced geometric mark evoking industrial beams and structural stability. Built a comprehensive 20+ page Brandbook detailing logo clear space, forbidden distortions, tactile color palettes (Safety Yellow, Earth Dark, Steel Gray), and environmental applications.",
+        tools: "Adobe Illustrator, Adobe InDesign, Adobe Photoshop",
+        impact: "Standardized all brand collateral across engineering teams, site managers, and executive presentations."
+      },
+      brakeloose: {
+        title: "Brake Loose — Dublin Rock Band Discography, 2025 EPK & Artworks",
+        client: "Brake Loose (Dublin, Ireland)",
+        images: [
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_YIAV_Vinyl_PreSave.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_Logo_Simple_2025.jpg",
+          "./portfolio_curated/03_Decks_Editorial/BrakeLoose_EPK_2025_Slide_01.jpg",
+          "./portfolio_curated/03_Decks_Editorial/BrakeLoose_EPK_2025_Slide_02.jpg",
+          "./portfolio_curated/03_Decks_Editorial/BrakeLoose_EPK_2025_Slide_03.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_MissBehave_Mockup1.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_MissBehave_Front.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_Artwork_ThroughTheWest.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_Artwork_SexyLady.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_GimmeGimme_Mockup.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/BrakeLoose_TTTY_Distrokid.jpg"
+        ],
+        challenge: "Establish a rebellious, visually distinctive brand identity for an international rock band releasing music across major streaming platforms, UK radio, and European summer festivals, backed by an authoritative industry Electronic Press Kit (EPK).",
+        solution: "Crafted individualized single cover artworks ('Yea I'm A Vampire' vinyl pre-save, 'Miss Behave', 'Through The West', 'Sexy Lady', 'Gimme Gimme') combining analogue distress textures, gothic and neo-punk typography, and 3D physical merchandise mockups. Designed the official 2025 Electronic Press Kit (EPK) and updated minimalist band logo.",
+        tools: "Adobe Photoshop, Illustrator, InDesign",
+        impact: "Directly utilized for Spotify editorial submissions (180k+ streams), Kerrang! & Hot Press features, European tour merchandising, and festival bookings."
+      },
+      octopus: {
+        title: "Octopus LATAM — Commercial Pitch Deck & Growth Assets",
+        client: "Octopus LATAM (Performance & E-Commerce Agency)",
+        images: [
+          "./portfolio_curated/01_Social_Media_Ads/OCTOPUS_Story_088.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/OCTOPUS_Story_095.jpg",
+          "./portfolio_curated/01_Social_Media_Ads/OCTOPUS_Story_100.jpg"
+        ],
+        challenge: "Equip agency leadership with high-converting sales collateral to pitch enterprise retailers and produce lead magnets that demonstrated immediate domain expertise.",
+        solution: "Engineered the official 16-slide capabilities deck, combining clean data visualization, client proof bars, and step-by-step performance funnels. Complemented with the annual E-Commerce Dates Calendar and Black Friday Preparation Guide.",
+        tools: "Adobe InDesign, Illustrator, Figma",
+        impact: "Empowered the sales team to present structured, high-ticket proposals to regional retail giants."
+      },
+      denisedt: {
+        title: "Denise De Tommasi — Executive Identity & Stationery",
+        client: "Denise De Tommasi Consulting",
+        images: [
+          "./portfolio_curated/02_Brand_Identity/DeniseDT_Stationery_Mockup.png",
+          "./portfolio_curated/02_Brand_Identity/DeniseDT_Cover.png",
+          "./portfolio_curated/02_Brand_Identity/DeniseDT_Artboard_01.png",
+          "./portfolio_curated/02_Brand_Identity/DeniseDT_Artboard_02.png",
+          "./portfolio_curated/02_Brand_Identity/DeniseDT_Artboard_03.png",
+          "./portfolio_curated/02_Brand_Identity/DeniseDT_Artboard_04.png",
+          "./portfolio_curated/02_Brand_Identity/DeniseDT_Artboard_05.png"
+        ],
+        challenge: "Create a luxurious yet contemporary personal brand identity for high-level management consulting.",
+        solution: "Designed an interconnected monogram mark paired with tactile foil-stamped business cards, letterheads, and a 6-artboard Behance case study.",
+        tools: "Adobe Illustrator, InDesign, Photoshop",
+        impact: "Featured on Behance with top-tier aesthetic presentation."
+      },
+      posters: {
+        title: "Cultural & Academic Commemorative Posters",
+        client: "FBE - UCAB & TC 16th Anniversary",
+        images: [
+          "./portfolio_curated/04_Artworks_Merch_AI/Poster_FBE_UCAB_AngleView.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Poster_FBE_UCAB_WallMockup.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Poster_FBE_UCAB.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Poster_16Aniv_TC_Artboard1.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Poster_16Aniv_TC_Artboard2.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Poster_16Aniv_TC_Artboard3.png",
+          "./portfolio_curated/04_Artworks_Merch_AI/Poster_16Aniv_TC_City.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/Kira_Cafe_Botanical_Poster.png"
+        ],
+        challenge: "Demonstrate Swiss-style grid discipline, expressive typographic scale, and print-ready vector mastery for milestone academic and corporate celebrations.",
+        solution: "Structured modular layout systems that command attention both in street-level wall mockups and digital gallery formats.",
+        tools: "Adobe Illustrator, Photoshop",
+        impact: "Exhibited as official commemorative artwork."
+      },
+      ethereal: {
+        title: "Ethereal — Generative AI Art Direction & Concept Visuals",
+        client: "Ethereal Vistas",
+        images: [
+          "./portfolio_curated/04_Artworks_Merch_AI/Ethereal_AI_Concept_01.jpg",
+          "./portfolio_curated/04_Artworks_Merch_AI/Ethereal_AI_Ramen_Visual.jpeg",
+          "./portfolio_curated/04_Artworks_Merch_AI/Ethereal_Vistas_Logo.jpg"
+        ],
+        challenge: "Showcase how modern creative directors harness Generative AI to accelerate concept ideation, moodboard generation, and cinematic background textures.",
+        solution: "Authored specialized multi-parameter prompt sequences in Midjourney and Stable Diffusion, finished with Photoshop Generative Fill for commercial-grade fidelity.",
+        tools: "Midjourney, Stable Diffusion, Adobe Photoshop AI",
+        impact: "Speeds up concept iteration cycles by 400% while maintaining human artistic rigor."
+      },
+      dennyscaballero: {
+        title: "Dennys Caballero — Corporate Identity & Editorial Brochure",
+        client: "Dennys Caballero",
+        images: [
+          "./portfolio_curated/02_Brand_Identity/DennysCaballero_Cover.png",
+          "./portfolio_curated/02_Brand_Identity/DennysCaballero_Brochure.jpg",
+          "./portfolio_curated/02_Brand_Identity/DennysCaballero_Artwork_01.png",
+          "./portfolio_curated/02_Brand_Identity/DennysCaballero_Artwork_02.png",
+          "./portfolio_curated/02_Brand_Identity/DennysCaballero_Artwork_03.png",
+          "./portfolio_curated/02_Brand_Identity/DennysCaballero_Artwork_04.png"
+        ],
+        challenge: "Design an approachable, highly legible identity and printed brochure package for client onboarding.",
+        solution: "Developed an architectural geometric mark, clean tri-fold brochure layout with balanced typographic rhythm, and complete social assets.",
+        tools: "Adobe InDesign, Illustrator, Photoshop",
+        impact: "Delivered print-ready production files and digital collateral."
+      }
+    };
+
+    /* MODAL CAROUSEL CONTROLLER */
+    let currentCaseKey = null;
+    let currentSlideIdx = 0;
+    let autoplayInterval = null;
+    let isAutoplayRunning = true;
+    let isHoverPaused = false;
+
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (cat === 'all' || (card.dataset.category && card.dataset.category.split(' ').includes(cat))) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openModal(caseKey) {
+      const data = cases[caseKey];
+      if (!data) return;
+
+      currentCaseKey = caseKey;
+      currentSlideIdx = 0;
+
+      // Set Header
+      document.getElementById('modal-header').innerHTML = `
+        <span style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#ff3366;">${data.client}</span>
+        <h2 style="font-family:'Space Grotesk', sans-serif; font-size:28px; margin:6px 0 16px; color:#fff;">${data.title}</h2>
+      `;
+
+      // Set Text Body
+      document.getElementById('modal-text-body').innerHTML = `
+        <div class="case-section">
+          <h4>The Challenge & Objective</h4>
+          <p>${data.challenge}</p>
+        </div>
+        
+        <div class="case-section">
+          <h4>Creative Solution & Strategic Execution</h4>
+          <p>${data.solution}</p>
+        </div>
+
+        <div class="case-section">
+          <h4>Tools & Software Stack</h4>
+          <p><strong>${data.tools}</strong></p>
+        </div>
+
+        <div class="case-section">
+          <h4>Key Real-World Impact</h4>
+          <p>${data.impact}</p>
+        </div>
+      `;
+
+      // Build Thumbnails
+      const thumbRibbon = document.getElementById('thumb-ribbon');
+      thumbRibbon.innerHTML = data.images.map((imgSrc, i) => `
+        <div class="thumb-item ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})">
+          <img src="${imgSrc}" alt="thumb ${i+1}">
+        </div>
+      `).join('');
+
+      updateSlideView();
+
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      startAutoplay();
+    }
+
+    function updateSlideView() {
+      const data = cases[currentCaseKey];
+      if (!data) return;
+
+      const mainImg = document.getElementById('carousel-main-img');
+      mainImg.style.opacity = '0.3';
+      
+      setTimeout(() => {
+        mainImg.src = data.images[currentSlideIdx];
+        mainImg.style.opacity = '1';
+      }, 120);
+
+      document.getElementById('slide-counter-text').innerText = `Slide ${currentSlideIdx + 1} of ${data.images.length}`;
+
+      // Update active thumbnail
+      const thumbs = document.querySelectorAll('.thumb-item');
+      thumbs.forEach((t, i) => {
+        if (i === currentSlideIdx) {
+          t.classList.add('active');
+          t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          t.classList.remove('active');
+        }
+      });
+    }
+
+    function nextSlide(e) {
+      if (e) e.stopPropagation();
+      const data = cases[currentCaseKey];
+      if (!data) return;
+      currentSlideIdx = (currentSlideIdx + 1) % data.images.length;
+      updateSlideView();
+      resetAutoplayTimer();
+    }
+
+    function prevSlide(e) {
+      if (e) e.stopPropagation();
+      const data = cases[currentCaseKey];
+      if (!data) return;
+      currentSlideIdx = (currentSlideIdx - 1 + data.images.length) % data.images.length;
+      updateSlideView();
+      resetAutoplayTimer();
+    }
+
+    function goToSlide(idx) {
+      currentSlideIdx = idx;
+      updateSlideView();
+      resetAutoplayTimer();
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      if (!isAutoplayRunning) return;
+      autoplayInterval = setInterval(() => {
+        if (!isHoverPaused && isAutoplayRunning) {
+          nextSlide();
+        }
+      }, 5000);
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    }
+
+    function resetAutoplayTimer() {
+      if (isAutoplayRunning) {
+        startAutoplay();
+      }
+    }
+
+    function toggleAutoplay() {
+      isAutoplayRunning = !isAutoplayRunning;
+      const badge = document.getElementById('autoplay-toggle');
+      const text = document.getElementById('autoplay-status-text');
+      const dot = document.getElementById('autoplay-pulse-dot');
+
+      if (isAutoplayRunning) {
+        badge.className = 'autoplay-badge running';
+        text.innerText = 'Auto-Play: 5s';
+        dot.style.display = 'block';
+        startAutoplay();
+      } else {
+        badge.className = 'autoplay-badge';
+        text.innerText = 'Auto-Play: Off';
+        dot.style.display = 'none';
+        stopAutoplay();
+      }
+    }
+
+    function pauseAutoplayHover() {
+      isHoverPaused = true;
+    }
+
+    function resumeAutoplayHover() {
+      isHoverPaused = false;
+    }
+
+    function closeModal(e) {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+      stopAutoplay();
+    }
+
+    function closeModalDirect() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+      stopAutoplay();
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('modal');
+      if (modal.classList.contains('active')) {
+        if (e.key === 'ArrowRight') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Escape') {
+          closeModalDirect();
+        }
+      }
+    });
+
+    /* HERO DUAL-PANEL ROTATOR (30-Second display, 4-Second smooth blur/fade) */
+    let currentHeroPanel = 0;
+    const heroDisplayDuration = 30000; // 30,000 ms = 30 seconds
+    let heroTimerStart = Date.now();
+    let heroInterval = null;
+
+    function switchHeroPanel(targetIdx) {
+      if (targetIdx === currentHeroPanel) return;
+      
+      const panel0 = document.getElementById('hero-panel-0');
+      const panel1 = document.getElementById('hero-panel-1');
+      const dot0 = document.getElementById('hero-dot-0');
+      const dot1 = document.getElementById('hero-dot-1');
+
+      if (targetIdx === 1) {
+        panel0.classList.remove('active');
+        panel1.classList.add('active');
+        if (dot0) dot0.classList.remove('active');
+        if (dot1) dot1.classList.add('active');
+        currentHeroPanel = 1;
+      } else {
+        panel1.classList.remove('active');
+        panel0.classList.add('active');
+        if (dot1) dot1.classList.remove('active');
+        if (dot0) dot0.classList.add('active');
+        currentHeroPanel = 0;
+      }
+
+      heroTimerStart = Date.now();
+    }
+
+    function runHeroCycle() {
+      heroInterval = setInterval(() => {
+        const elapsed = Date.now() - heroTimerStart;
+        if (elapsed >= heroDisplayDuration) {
+          switchHeroPanel((currentHeroPanel + 1) % 2);
+        }
+      }, 200);
+    }
+
+    // Initialize Hero Cycle on Page Load
+    runHeroCycle();
+  </script>
+</body>
+</html>
